@@ -44,8 +44,8 @@ module.exports = {
   },
 
   build: {
-    // Template for index.vue.html
-    index: path.resolve(__dirname, '../dist/index.vue.html'),
+    // Template for index.vue.vue.vue.html
+    index: path.resolve(__dirname, '../dist/index.vue.vue.vue.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),

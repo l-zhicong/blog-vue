@@ -57,12 +57,12 @@ const webpackConfig = merge(baseWebpackConfig, {
         ? { safe: true, map: { inline: false } }
         : { safe: true }
     }),
-    // generate dist index.vue.html with correct asset hash for caching.
-    // you can customize output by editing /index.vue.html
+    // generate dist index.vue.vue.vue.html with correct asset hash for caching.
+    // you can customize output by editing /index.vue.vue.vue.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index.vue.html',
+      template: 'index.html',
       inject: true,
       minify: {
         removeComments: true,

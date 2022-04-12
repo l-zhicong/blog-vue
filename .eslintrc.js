@@ -42,7 +42,7 @@ module.exports = {
     }],
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
-      optionalDependencies: ['test/unit/index.vue.js']
+      optionalDependencies: ['test/unit/index.vue.vue.vue.js']
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

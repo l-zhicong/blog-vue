@@ -6,10 +6,12 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+// 自定义提示框
+import './assets/css/iconfont'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
