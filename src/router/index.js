@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '../layouts/music-layout'
+import Layout from '../layouts/index'
 
 Vue.use(Router)
 
@@ -34,5 +34,25 @@ export default new Router({
         title:"关于我"
       }
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('../layouts/index'),
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: Layout,
+      children: [
+        {
+          path: '/index/music',
+          name: 'music',
+          component: () => import('../view/music/index'),
+          meta: {
+            activeMenu: '/music'
+          },
+        },
+      ]
+    }
   ]
 })
