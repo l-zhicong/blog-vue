@@ -12,46 +12,33 @@ export default new Router({
       component: () => import('../view/home/index'),
     },
     {
-      path: '/article',
-      name: 'article',
-      component: () => import('../view/article/index'),
-    },
-    {
-      path: '/music',
-      name: 'music',
-      component: () => import('../view/music/index'),
-    },
-    {
-      path: '/project',
-      name: 'project',
-      component: () => import('../view/music/index'),
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../view/about/index'),
-      meta:{
-        title:"关于我"
-      }
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import('../layouts/index'),
-    },
-    {
-      path: '/index',
-      name: 'index',
+      path: '/',
+      name: 'page',
       component: Layout,
       children: [
         {
-          path: '/index/music',
+          path: '/article',
+          name: 'article',
+          component: () => import('../view/article/index'),
+        },
+        {
+          path: '/music',
           name: 'music',
           component: () => import('../view/music/index'),
-          meta: {
-            activeMenu: '/music'
-          },
         },
+        {
+          path: '/project',
+          name: 'project',
+          component: () => import('../view/project/index'),
+        },
+        {
+          path: '/about',
+          name: 'about',
+          component: () => import('../view/about/index'),
+          meta:{
+            title:"关于我"
+          }
+        }
       ]
     }
   ]
