@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <header class="navbar">
     <section class="box header-content navbar">
       <router-link
         v-for="item in nav"
@@ -12,7 +12,7 @@
         {{ item.text }}
     </router-link>
     </section>
-  </div>
+  </header>
 </template>
 
 <script>
