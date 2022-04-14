@@ -12,6 +12,7 @@ export default {
 
 <style scoped>
   .app-bottom {
-    background-color: #2b9aff;
+    height: 20px;
+    /*background-color: #2b9aff;*/
   }
 </style>

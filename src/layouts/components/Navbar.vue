@@ -58,6 +58,7 @@ export default {
 .navbar {
   height: 50px;
   overflow: hidden;
+  line-height: 50px;
   //position: relative;
   //background: #ff0000;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);

@@ -18,9 +18,9 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 70px);
   width: 100%;
-  //position: relative;
+  position: relative;
   overflow: hidden;
   //background-color: #2b9aff;
 }

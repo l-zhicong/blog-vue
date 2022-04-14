@@ -25,7 +25,7 @@
     </section>
     <div class="home-view">
       <section class="aboutMe">
-          <a  @click="toProject">
+          <a  @click="toArticle">
             <span class="is-display1">文章</span>
             <span class="is-display2">Article</span>
           </a>
