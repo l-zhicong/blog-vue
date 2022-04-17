@@ -22,6 +22,11 @@ export default new Router({
           component: () => import('../view/article/index'),
         },
         {
+          path: '/article/info/:id(\\d+)',
+          name: 'articleInfo',
+          component: () => import('../view/article/info'),
+        },
+        {
           path: '/music',
           name: 'music',
           component: () => import('../view/music/index'),

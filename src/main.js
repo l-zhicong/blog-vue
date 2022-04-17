@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Progress,Row,Col,Input,Button} from 'element-ui'
+import {Progress,Row,Col,Input,Button,Pagination} from 'element-ui'
 
 Vue.config.productionTip = false
 Vue.use(Progress)
@@ -11,6 +11,7 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Input)
 Vue.use(Button)
+Vue.use(Pagination)
 
 import '@/styles/index.scss' // 全局 css
 

@@ -1,19 +1,20 @@
 <template>
   <div class="category-box">
-      <div class="item" v-for="(item,index) in category">
+      <a class="item" v-for="(item,index) in category" @click="getArticleList(item.article_category_id)">
         {{item.title}}
-      </div>
+      </a>
   </div>
 </template>
 
 <script>
 import {Category} from '../data.js'
+import {getCategoryList} from "@/api";
 export default {
     data(){
       return {
         category:[
           {
-            id:"",
+            article_category_id:"",
             title:"",
           },
         ]
@@ -24,22 +25,32 @@ export default {
     },
     methods: {
         init(){
-          this.category = Category
-        }
+            getCategoryList().then(res => {
+            this.category = res.data.list
+          })
+          // this.category = Category
+        },
+      getArticleList(id){
+          this.$emit('Event',id)
+      }
     }
 }
 </script>
 
 <style scoped>
 .category-box{
+  position: relative;
+  top: 20px;
   float:left;
   width:20%;
   height: calc(100vh - 70px);
   /*background-color: #2b9aff;*/
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 .item {
-  padding: 20px 18px;
+  padding: 15px 18px;
   overflow: hidden;
   position: relative;
   /* border-bottom: 1px solid #f1f1f1; */

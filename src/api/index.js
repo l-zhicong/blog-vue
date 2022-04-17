@@ -1,9 +1,26 @@
 import request from '@/utils/request'
-const prefix = '/api/article'
+const article = '/api/article'
+const category = `${article}/category`
 
-export function getAticleList() {
+export function getArticleList(query) {
   return request({
-    url: `${prefix}/list`,
+    url: `${article}/list`,
+    method: 'get',
+    params:query
+  })
+}
+
+export function getArticleInfo(id) {
+  return request({
+    url: `${article}/info/${id}`,
     method: 'get'
+  })
+}
+
+export function getCategoryList(query) {
+  return request({
+    url: `${category}/list`,
+    method: 'get',
+    query: query
   })
 }

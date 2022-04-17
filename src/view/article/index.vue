@@ -1,45 +1,54 @@
 <template>
   <div class="articleBox">
-    <Category/>
+    <Category @Event="Test" ref="Category"> </Category>
     <section class="article" ref="scrollTopList">
-        <div class="item" v-for="(item, index) of article" :key="index" @click="getArticleInfo(item.id)">
+        <a class="item" v-for="(item, index) of article" :key="index" @click="getArticleInfo(item.id)">
           <a href="javascript:void(0)" class="article-title" @click="">
             <h2>{{item.title}}</h2>
           </a>
-          <p class="article-desc">{{item.content}}</p>
+          <p class="article-desc">{{item.name}}</p>
           <div class="article-info">
-            <span class="time">{{item.createTime}}</span>
+            <span class="time">{{item.create_time}}</span>
             <i class="iconfont">&#xe600;</i>
                 <span class="time"><strong>{{item.read_num}}</strong>次阅读</span>
             <i class="iconfont">&#xe600;</i>
             <span class="time"><strong>{{item.comment_num}}</strong>条评论</span>
           </div>
-        </div>
-        <div class="loadmore" v-if="!hasMore">没有更多数据了</div>
+        </a>
+        <div class="loadmore" v-if="!isLoadingData">没有更多数据了</div>
         <div class="loadmore" v-else>
           <span v-if="isLoadingData">数据加载中...</span>
         </div>
     </section>
+<!--    <el-pagination-->
+<!--      background-->
+<!--      layout="prev, pager, next"-->
+<!--      :total="1000">-->
+<!--    </el-pagination>-->
   </div>
 </template>
 
 <script>
 import {Article} from "./data.js"
 import Category from "@/view/article/category";
-import {toTime} from "@/utils/time";
+import {getArticleList} from "@/api";
 
 export default {
   data () {
     return {
+      queryParams: {
+        page: 1,
+        limit: 5,
+        cid:"",
+      },
       article: [],
       isLoadingData: false, //是否有数据
-      hasMore: true, //是否还有数据
-      devicePageSize: 10, //每页显示
-      devicePageNum: 1, //当前页
-      devicePageTotal: 0, //总条数
-      devicePageTotalPages: 0, //总页数
-      deviceListIsFinish: false, //是否加载完成
-      deviceListIsLoad: false, //是否加载更多
+      // hasMore: true, //是否还有数据
+      PageSize: 10, //每页显示
+      PageNum: 1, //当前页
+      PageTotal: 0, //总条数
+      ListIsFinish: false, //是否加载完成
+      ListIsLoad: false, //是否加载更多
       deviceTip: "",
     }
   },
@@ -49,23 +58,51 @@ export default {
   computed: {
   },
   methods: {
-    getArticleList(){
-      console.log("列表")
+    Test(id){
+      this.queryParams.page = 1
+      this.queryParams.cid = id
+      this.getList()
     },
-    getArticleInfo(){
-      console.log("详情")
+    init(){
+      this.getList()
+    },
+    getList(){
+      getArticleList(this.queryParams).then(res => {
+        this.isLoadingData = true
+        const {data} = res
+        this.PageNum = data.page
+        this.PageTotal = data.lastPage
+        console.log(this.PageTotal,data.page)
+        if (data.total <= this.queryParams.limit){
+          this.isLoadingData = false
+        }
+        let arr = []
+        if (this.queryParams.page === 1) {
+          arr = data.list
+        } else {
+          arr = this.article.concat(data.list)
+        }
+        this.article = arr
+      }).catch(err => {
+        this.isLoadingData = false
+      })
+    },
+    getArticleInfo(id){
+      this.$router.push("article/info/"+id)
     },
     handleScroll(){
       let scrollTop = this.$refs.scrollTopList.scrollTop,
         clientHeight = this.$refs.scrollTopList.clientHeight,
         scrollHeight = this.$refs.scrollTopList.scrollHeight,
-        height = 50; //根据项目实际定义
+        height = 0; //根据项目实际定义
       if(scrollTop +clientHeight >= scrollHeight - height){
-        if(this.pageSize > this.total){
+        if(this.PageTotal === this.PageNum){
+          this.isLoadingData = false
           return false
         }else{
-          this.pageSize = this.pageSize +10 //显示条数新增
-          this.getArticleList() //请求列表list 接口方法
+          this.queryParams.page += 1
+          // this.devicePageSize = this.devicePageSize +10 //显示条数新增
+          this.getList() //请求列表list 接口方法
         }
       }else{
         return false
@@ -94,7 +131,7 @@ export default {
     },
   },
   mounted () {
-    this.article = Article
+    this.init()
     this.$refs.scrollTopList.addEventListener("scroll",this.throttle(this.handleScroll,500),true)
   },
 }
@@ -113,11 +150,11 @@ export default {
   width: calc(100% - 20%);
   float: left;
   box-sizing: border-box;
-  background: transparent;
+  /*background: transparent;*/
   height: calc(100vh - 70px);
   overflow-x: hidden; /*x轴禁止滚动*/
   overflow-y: scroll;/*y轴滚动*/
-
+  /*background-image: url("../../assets/img/aside-bg.jpg");*/
 
   /*background-color: #3e3e3e;*/
 }
@@ -198,24 +235,6 @@ export default {
   box-sizing: border-box;
   padding-top: 24px;
 }
-.tagSide {
-  width: 250px;
-  box-sizing: border-box;
-  padding-top: 24px;
-  position: fixed;
-  left: 50%;
-  margin-left: 200px;
-  top: 24px;
-}
-.hot-title{
-  font-size: 16px;
-}
-.hot-article, .tag-list{
-  margin-top: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: 6px;
-}
 .hot-article h3{
   font-weight: normal;
   line-height: 40px;
@@ -223,9 +242,6 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.tags{
-  margin-top: 24px;
 }
 .tag-list a{
   display: inline-block;
@@ -237,25 +253,8 @@ export default {
   cursor: pointer;
   color: #cccccc
 }
-.smallNav{
-  margin-top: 20px;
-  width: 100%;
-  position: relative;
-  color: #797979;
-}
-.flag{
-  width: 35%;
-  height: 1px;
-  background: #f1f1f1;
-  margin-bottom: 20px;
-}
 .smallNav a{
   padding: 0 5px;
   color: #797979;
-}
-.fixedTag{
-  position: fixed;
-  width: 250px;
-  top: 60px;
 }
 </style>
