@@ -19,6 +19,9 @@
             <a href="https://www.jianshu.com/u/6797ba121247">
               <i class="iconfont">&#xe8a2;</i>
             </a>
+            <a href="https://registry.hub.docker.com/search?q=xiaoyaoguai">
+              <i class="iconfont">&#xe9f3;</i>
+            </a>
           </div>
         </div>
       </div>
@@ -76,21 +79,6 @@ export default {
   --fontColor: #5e5e5e; /*文字颜色*/
   --titleColor: #3e3e3e; /*标题颜色*/
   --lineColor: #3fb76c; /*线条绿色*/
-}
-
-@font-face {
-  font-family: 'iconfont';
-  src: url('../../assets/css/iconfont.ttf?t=1649837008369') format('truetype');
-}
-
-
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  border-radius: 50%;
 }
 
 .homePage {

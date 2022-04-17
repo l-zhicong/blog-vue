@@ -9,9 +9,9 @@
           <p class="article-desc">{{item.name}}</p>
           <div class="article-info">
             <span class="time">{{item.create_time}}</span>
-            <i class="iconfont">&#xe600;</i>
+            <i class="iconfont">&#xe661;</i>
                 <span class="time"><strong>{{item.read_num}}</strong>次阅读</span>
-            <i class="iconfont">&#xe600;</i>
+            <i class="iconfont">&#xe891;</i>
             <span class="time"><strong>{{item.comment_num}}</strong>条评论</span>
           </div>
         </a>

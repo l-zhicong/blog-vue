@@ -5,6 +5,20 @@
 @import './sidebar.scss';
 @import './btn.scss';
 
+@font-face {
+  font-family: 'iconfont';
+  src: url('../assets/css/iconfont.ttf?t=1649837008369') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: 50%;
+}
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
