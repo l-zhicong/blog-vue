@@ -13,6 +13,13 @@
       "unicode_decimal": 58977
     },
     {
+      "icon_id": "2076265",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e891",
+      "unicode_decimal": 59537
+    },
+    {
       "icon_id": "3135769",
       "name": "简书",
       "font_class": "jianshu",
