@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 import { MessageBox, Message } from 'element-ui'
 
 const service = axios.create({
@@ -9,7 +10,11 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    if (config.data) {
+      config.data = qs.stringify(config.data)
+    }
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+    config.responseType = 'json'
     return config
   },
   error => {
