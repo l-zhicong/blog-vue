@@ -31,17 +31,17 @@ export default {
           text: '文章'
         },
         {
-          path: '/project',
-          text: '项目'
+          path: '/music',
+          text: '音乐'
+        },
+        {
+          path: '/notice',
+          text: '征婚启事'
         },
         {
           path: '/about',
           text: '关于'
         },
-        {
-          path: '/music',
-          text: '音乐'
-        }
       ]
     }
   },

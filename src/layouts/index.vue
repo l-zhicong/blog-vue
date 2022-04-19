@@ -30,7 +30,7 @@ export default {
           text: '文章'
         },
         {
-          path: '/project',
+          path: '/notice',
           text: '项目'
         },
         {

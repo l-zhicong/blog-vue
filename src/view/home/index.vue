@@ -37,8 +37,8 @@
             <span class="is-display2">Music</span>
           </a>
           <a @click="toProject">
-            <span class="is-display1">项目</span>
-            <span class="is-display2">Project</span>
+            <span class="is-display1">征婚启事</span>
+            <span class="is-display2">Notice</span>
           </a>
           <a @click="toAbout">
             <span class="is-display1">关于</span>
@@ -64,7 +64,7 @@ export default {
       this.$router.push("music")
     },
     toProject() {
-      this.$router.push("project")
+      this.$router.push("notice")
     },
     toAbout() {
       this.$router.push("about")

@@ -32,9 +32,9 @@ export default new Router({
           component: () => import('../view/music/index'),
         },
         {
-          path: '/project',
-          name: 'project',
-          component: () => import('../view/project/index'),
+          path: '/notice',
+          name: 'notice',
+          component: () => import('../view/notice/index'),
         },
         {
           path: '/about',
