@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "630126",
+      "name": "眼睛",
+      "font_class": "yanjing",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "2076265",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e891",
+      "unicode_decimal": 59537
+    },
+    {
       "icon_id": "3135769",
       "name": "简书",
       "font_class": "jianshu",
@@ -13,11 +27,32 @@
       "unicode_decimal": 59554
     },
     {
+      "icon_id": "3176611",
+      "name": "Docker",
+      "font_class": "Docker",
+      "unicode": "e9f3",
+      "unicode_decimal": 59891
+    },
+    {
       "icon_id": "4937000",
       "name": "github-fill",
       "font_class": "github-fill",
       "unicode": "e885",
       "unicode_decimal": 59525
+    },
+    {
+      "icon_id": "17605434",
+      "name": "阅读",
+      "font_class": "yuedu",
+      "unicode": "e810",
+      "unicode_decimal": 59408
+    },
+    {
+      "icon_id": "20000269",
+      "name": "阅读",
+      "font_class": "yuedu1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
     },
     {
       "icon_id": "28724763",

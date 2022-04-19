@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1649837008369') format('truetype');
+  src: url('iconfont.ttf?t=1650197592692') format('truetype');
 }
 
 .iconfont {
@@ -11,12 +11,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-yanjing:before {
+  content: "\e661";
+}
+
+.icon-pinglun:before {
+  content: "\e891";
+}
+
 .icon-jianshu:before {
   content: "\e8a2";
 }
 
+.icon-Docker:before {
+  content: "\e9f3";
+}
+
 .icon-github-fill:before {
   content: "\e885";
+}
+
+.icon-yuedu:before {
+  content: "\e810";
+}
+
+.icon-yuedu1:before {
+  content: "\e604";
 }
 
 .icon-daohang:before {

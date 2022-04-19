@@ -3,15 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Container,Header,Aside,Main,Footer,Menu} from 'element-ui'
+import {Progress,Row,Col,Input,Button,Pagination} from 'element-ui'
 
 Vue.config.productionTip = false
-Vue.use(Container)
-Vue.use(Header)
-Vue.use(Aside)
-Vue.use(Main)
-Vue.use(Footer)
-Vue.use(Menu)
+Vue.use(Progress)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Pagination)
 
 import '@/styles/index.scss' // 全局 css
 
