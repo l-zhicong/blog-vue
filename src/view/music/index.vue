@@ -12,7 +12,7 @@
       </button>
       <input id="musicFile" @change="inputFile($event)" type="file">
     </div>
-    <audio id="music" crossorigin="anonymous" :src="url" ref="audio" controls="controls" autoplay="autoplay">
+    <audio id="music" crossorigin="anonymous" :src="url" ref="audio" loop="loop" controls="controls" autoplay="autoplay">
     </audio>
     <div id="music-info">
       <marquee v-if="fileName" hspace="20" behavior="scroll" direction="left">{{ fileName }}</marquee>
