@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Progress,Row,Col,Input,Button,Pagination} from 'element-ui'
+import {Progress,Row,Col,Input,Button,Pagination,Radio,Drawer,Slider,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
 
 Vue.config.productionTip = false
 Vue.use(Progress)
@@ -12,7 +12,12 @@ Vue.use(Col)
 Vue.use(Input)
 Vue.use(Button)
 Vue.use(Pagination)
-
+Vue.use(Radio)
+Vue.use(Drawer)
+Vue.use(Slider)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 import '@/styles/index.scss' // 全局 css
 
 /* eslint-disable no-new */

@@ -45,7 +45,7 @@ export default {
   width:20%;
   height: calc(100vh - 70px);
   /*background-color: #2b9aff;*/
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }

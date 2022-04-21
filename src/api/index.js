@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 const article = '/api/article'
 const category = `${article}/category`
+const music = `/api/music`
 
 export function getArticleList(query) {
   return request({
@@ -20,6 +21,14 @@ export function getArticleInfo(id) {
 export function getCategoryList(query) {
   return request({
     url: `${category}/list`,
+    method: 'get',
+    query: query
+  })
+}
+
+export function getMusicList(query) {
+  return request({
+    url: `${music}/list`,
     method: 'get',
     query: query
   })
