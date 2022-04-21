@@ -94,9 +94,8 @@ export default {
       this.musicList = res.data.list
       this.musicCount = res.data.count
     })
-    console.log("2222")
     this.$nextTick(()=>{
-      setInterval(this.upSliderTime,1000)
+      setInterval(this.upSliderTime(this.$refs.audio.currentTime),1000)
     })
   },
   methods: {
@@ -198,8 +197,8 @@ export default {
     changeTime(time){
       this.$refs.audio.currentTime = time
     },
-    upSliderTime(){
-        this.nowMusic.currentTime = this.$refs.audio.currentTime
+    upSliderTime(currentTime){
+        this.nowMusic.currentTime = currentTime
     },
     formatTime(time){
       let it = parseInt(time)
