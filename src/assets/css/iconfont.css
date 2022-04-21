@@ -31,8 +31,40 @@
   content: "\e885";
 }
 
+.icon-zanting:before {
+  content: "\e65e";
+}
+
+.icon-danquxunhuan:before {
+  content: "\e501";
+}
+
 .icon-yuedu:before {
   content: "\e810";
+}
+
+.icon-liebiaoxunhuan:before {
+  content: "\e64c";
+}
+
+.icon-xunhuan:before {
+  content: "\e7f3";
+}
+
+.icon-zanting1:before {
+  content: "\e7fd";
+}
+
+.icon-xiayishou:before {
+  content: "\e7fe";
+}
+
+.icon-shangyishou:before {
+  content: "\e7ff";
+}
+
+.icon-bofang:before {
+  content: "\e800";
 }
 
 .icon-yuedu1:before {
