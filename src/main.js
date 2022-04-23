@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import lax from 'lax.js'
 import {Progress,Row,Col,Input,Button,Pagination,Radio,Drawer,Slider,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
 
 Vue.config.productionTip = false
+Vue.use(lax)
 Vue.use(Progress)
 Vue.use(Row)
 Vue.use(Col)
