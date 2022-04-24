@@ -42,7 +42,7 @@
         <el-input placeholder="请输入内容" v-model="msg.name" size="100px" clearable></el-input>
         <el-input placeholder="请输入内容" v-model="msg.email" clearable></el-input>
         <el-input type="textarea" :rows="7" :autosize="{ minRows: 2, maxRows: 4}" autosize placeholder="请输入内容" v-model="msg.message"></el-input>
-        <el-button type="primary" @click="">发送消息</el-button>
+        <el-button type="primary" @click="sendOutLetter">发送消息</el-button>
       </div>
     </section>
 
@@ -55,6 +55,7 @@
 </template>
 <script>
 import lax from 'lax.js'
+import {sendOutLetter} from '@/api'
 export default{
   data(){
     return {
@@ -255,6 +256,14 @@ export default{
       })
     },
 
+
+    sendOutLetter(){
+      sendOutLetter(this.msg).then(() =>{
+        console.log("发送成功")
+      //  清空表格
+      //  弹窗
+      })
+    }
   }
 }
 </script>
