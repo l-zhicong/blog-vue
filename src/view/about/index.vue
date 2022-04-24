@@ -38,10 +38,16 @@
     <section class="letter">
       <h2>联系人</h2>
       <h3>给我留个口信</h3>
-      <div>
-        <el-input placeholder="请输入内容" v-model="msg.name" size="100px" clearable></el-input>
-        <el-input placeholder="请输入内容" v-model="msg.email" clearable></el-input>
-        <el-input type="textarea" :rows="7" :autosize="{ minRows: 2, maxRows: 4}" autosize placeholder="请输入内容" v-model="msg.message"></el-input>
+      <div class="content">
+        <el-input placeholder="请输入名字" v-model="msg.name" size="100px" clearable></el-input>
+        <el-input placeholder="请输入email" v-model="msg.email" clearable></el-input>
+        <el-input
+          type="textarea"
+          placeholder="请输入内容"
+          v-model="msg.message"
+          maxlength="30"
+          show-word-limit
+        ></el-input>
         <el-button type="primary" @click="sendOutLetter">发送消息</el-button>
       </div>
     </section>
@@ -55,68 +61,16 @@
 </template>
 <script>
 import lax from 'lax.js'
-import {sendOutLetter} from '@/api'
+import {sendOutLetter,GetMyhomepageInfo} from '@/api'
+import {Message} from "element-ui";
 export default{
   data(){
     return {
-      name: "梁智聪",
-      remarks: "后端开发者，数据库以及服务器管理者",
-      introduce:
-        "1、两年工作经验 精通php+Mysql 网站开发、熟练使用php主流框架，精通mysql数据库常用操作；\n" +
-        "              2、熟练开发高性能API接口，熟悉缓存技术以及Linux操作系统常用命令；\n" +
-        "              3、掌握HTML、CSS3，js等技能，可独立开发微信项目；\n" +
-        "              熟练php多进程编程 mysql,索引优化，php socket，linux,composer,npm,swoole，websocket的使用\n" +
-        "              熟练使用swoft框架,tp5框架\n" +
-        "              微信小程序，微信支付宝支付等第三方接口\n" +
-        "              Lamp、Lnmp环境下开发\n" +
-        "              熟练使用redis\n" +
-        "              熟练数据结构、算法\n" +
-        "              熟练docker、golang并发编程、elasticsearch全文搜索" +
-        "              Web开发：PHP/ Python\n" +
-        "              Web框架：ThinkPHP/Lavarel/ Dedecms / Ecshop/ PHPmywind\n" +
-        "              前端框架：Bootstrap/ AngularJS/ Vuede.js/React/Layui/uni-app\n" +
-        "              版本管理、文档和自动化部署工具：Svn/ Git/ PHPDoc\n" +
-        "              单元测试：PHPUnit/ SimpleTest\n" +
-        "              云和开放平台：微博开放平台/ 微信公众号开发/ 微信小程序开发/短信接口/支付宝支付\n" +
-        "              操作系统：基于linux/ mac/ 开发"
-      ,
-      skills:[
-        {
-          name:"HTML5",
-          schedule:80
-        },
-        {
-          name:"php",
-          schedule:80
-        },
-        {
-          name:"golang",
-          schedule:80
-        },
-        {
-          name:"golang",
-          schedule:80
-        },
-        {
-          name:"golang",
-          schedule:80
-        },
-        {
-          name:"golang",
-          schedule:80
-        }
-      ],
+      name: "",
+      remarks: "",
+      introduce:"",
+      skills:[],
       portfolio:[
-        {name:"人工湖",url:"http://101.43.236.186:82/images/1.jpg"},
-        {name:"球场",url:"http://101.43.236.186:82/images/2.jpg"},
-        // {name:"球场",url:"http://101.43.236.186:82/images/3.jpg"},
-        // {name:"球场",url:"http://101.43.236.186:82/images/4.jpg"},
-        {name:"房间",url:"http://101.43.236.186:82/images/5.jpg"},
-        {name:"屋顶猫",url:"http://101.43.236.186:82/images/6.jpg"},
-        // {name:"吴亦凡",url:"http://101.43.236.186:82/images/7.jpg"},
-        // {name:"狗子",url:"http://101.43.236.186:82/images/8.jpg"},
-        // {name:"风景",url:"http://101.43.236.186:82/images/9.jpg"},
-        // {name:"家里",url:"http://101.43.236.186:82/images/10.jpg"}
       ],
       msg:{
         name:"",
@@ -129,7 +83,7 @@ export default{
   mounted(){
     this.init()
     this.introduceDom()
-    this.aboutMeDom()
+
     this.skillsDom()
     this.portfolioDom()
     this.letterDom()
@@ -140,6 +94,15 @@ export default{
       lax.addDriver('scrollY', ()=> {
         // console.log(window.scrollY)
         return window.scrollY
+      })
+      GetMyhomepageInfo().then((res) =>{
+        let {data} = res
+        this.name = data.name
+        this.remarks = data.remarks
+        this.introduce = data.introduce
+        this.portfolio = data.img
+        this.skills = data.skills
+        this.aboutMeDom()
       })
     },
 
@@ -259,10 +222,14 @@ export default{
 
     sendOutLetter(){
       sendOutLetter(this.msg).then(() =>{
-        console.log("发送成功")
-      //  清空表格
-      //  弹窗
-      })
+        Message({
+          message: "发送成功,谢谢支持我会回复您的",
+          type: 'success',
+          duration: 5 * 1000
+        })
+      }).catch(
+
+      )
     }
   }
 }
@@ -305,12 +272,10 @@ export default{
   position: fixed;
   color: #a26ddc;
   top: 10px;
+  opacity:0;
 }
 .about-me .head-portrait {
   border-radius: 50%;
-}
-.about-me .describe {
-
 }
 
 
@@ -393,8 +358,12 @@ export default{
 }
 
 .letter h2{
-
   top: 100px;
+}
+
+.letter .content {
+  margin:auto;
+  width: 50%;
 }
 
 

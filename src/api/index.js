@@ -2,6 +2,7 @@ import request from '@/utils/request'
 const article = '/api/article'
 const category = `${article}/category`
 const music = `/api/music`
+const myHomePage = `/api/myhomepage`
 const letter = `/api/letter`
 
 export function getArticleList(query) {
@@ -32,6 +33,13 @@ export function getMusicList(query) {
     url: `${music}/list`,
     method: 'get',
     query: query
+  })
+}
+
+export function GetMyhomepageInfo(){
+  return request({
+    url: `${myHomePage}/info`,
+    method: 'get'
   })
 }
 
