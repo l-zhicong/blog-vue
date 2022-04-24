@@ -92,10 +92,11 @@ export default {
     this.color.addColorStop(1, '#00FFFF')
     getMusicList().then(res => {
       this.musicList = res.data.list
-      this.musicCount = res.data.count
+      this.musicCount = res.data.total
     })
+    console.log("2222")
     this.$nextTick(()=>{
-      setInterval(this.upSliderTime(this.$refs.audio.currentTime),1000)
+      setInterval(this.upSliderTime,1000)
     })
   },
   methods: {
@@ -197,8 +198,14 @@ export default {
     changeTime(time){
       this.$refs.audio.currentTime = time
     },
-    upSliderTime(currentTime){
-        this.nowMusic.currentTime = currentTime
+    upSliderTime(){
+      if(this.isPlay){
+        if (!this.nowMusic.maxTime){
+          this.nowMusic.maxTime = this.$refs.audio.duration
+        }
+        this.nowMusic.name = this.musicList[this.musicIndex].name
+        this.nowMusic.currentTime = this.$refs.audio.currentTime
+      }
     },
     formatTime(time){
       let it = parseInt(time)
