@@ -149,7 +149,6 @@ export default {
           this.draw()
         })
       }
-      this.$refs.recordImg.style.animationPlayState = "running"
     },
     loadMusic () {
       let music = this.musicList[this.musicIndex]
@@ -170,7 +169,6 @@ export default {
     pause(){
       this.audioCtx.resume().then(()=>{
         this.$refs.audio.pause()
-        this.$refs.recordImg.style.animationPlayState = "paused"
         this.draw()
       })
       this.isPlay = false

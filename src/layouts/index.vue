@@ -10,7 +10,7 @@
 <script>
 import AppMain from '@/layouts/components/AppMain'
 import Navbar from '@/layouts/components/Navbar'
-import Bottom from "@/layouts/components/Bottom";
+import Bottom from "@/layouts/components/Bottom"
 export default {
   name: 'Layout',
   components: {

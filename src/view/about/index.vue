@@ -20,12 +20,12 @@
         <el-row :gutter="20">
           <el-col :span="6"  v-for="(k,v) in skills":key="v">
             <h4>{{k.name}}</h4>
-            <el-progress type="circle" :percentage="90">22</el-progress></el-col>
+            <el-progress type="circle" :percentage="k.schedule"></el-progress></el-col>
         </el-row>
       </div>
     </section>
 
-    <section class="portfolio container">
+    <section class="portfolio">
       <h2>生活照</h2>
       <div class="content">
         <div v-for="item in portfolio" class="page">
@@ -324,6 +324,14 @@ export default{
   color: #8d77ed;
   font-weight: 800;
   font-size: 60px;
+}
+
+.portfolio h2 {
+  background-color: #8d77ed;
+  width: 50vw;
+  margin: 10px auto;
+  border-radius:30px;
+  top: calc(50% - 30%);
 }
 
 .portfolio .image{

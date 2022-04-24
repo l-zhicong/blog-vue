@@ -37,7 +37,7 @@
             <span class="is-display2">Music</span>
           </a>
           <a @click="toProject">
-            <span class="is-display1">征婚启事</span>
+            <span class="is-display1">征婚</span>
             <span class="is-display2">Notice</span>
           </a>
           <a @click="toAbout">
@@ -46,11 +46,16 @@
           </a>
       </section>
     </div>
+    <Bottom />
   </div>
 </template>
 
 <script>
+import Bottom from "@/layouts/components/Bottom";
 export default {
+  components: {
+    Bottom
+  },
   head () {
     return {
       title: 'naice | 首页'

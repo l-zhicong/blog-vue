@@ -1,6 +1,6 @@
 <template>
   <div class="app-bottom">
-    底部
+    我就不备案，该后端已部署到k8s上请放心食用
   </div>
 </template>
 
@@ -13,6 +13,9 @@ export default {
 <style scoped>
   .app-bottom {
     height: 20px;
-    /*background-color: #2b9aff;*/
+    text-align:center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
 </style>
