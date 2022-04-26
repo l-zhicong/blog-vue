@@ -47,7 +47,8 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        publicPath:'../../'
       })
     } else {
       return ['vue-style-loader'].concat(loaders)
@@ -93,7 +94,7 @@ exports.createNotifierCallback = () => {
 
     notifier.notify({
       title: packageConfig.name,
-      message: severity + ': ' + error.name,
+      // message: severity + ': ' + error.name,
       subtitle: filename || '',
       icon: path.join(__dirname, 'logo.png')
     })

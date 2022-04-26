@@ -29,20 +29,16 @@
     <div class="home-view">
       <section class="aboutMe">
           <a  @click="toArticle">
-            <span class="is-display1">文章</span>
-            <span class="is-display2">Article</span>
+            <span class="is-display">文章</span>
           </a>
           <a @click="toMusic">
-            <span class="is-display1">音乐</span>
-            <span class="is-display2">Music</span>
+            <span class="is-display">音乐</span>
           </a>
           <a @click="toProject">
-            <span class="is-display1">征婚</span>
-            <span class="is-display2">Notice</span>
+            <span class="is-display">征婚</span>
           </a>
           <a @click="toAbout">
-            <span class="is-display1">关于</span>
-            <span class="is-display2">About</span>
+            <span class="is-display">关于</span>
           </a>
       </section>
     </div>
@@ -128,10 +124,6 @@ export default {
   margin-bottom: 30px;
 }
 
-.is-display2 {
-  display: none;
-}
-
 .aboutMe a{
   width: 100px;
   height: 100px;
@@ -144,23 +136,15 @@ export default {
   transition: background 0.5s;
   border-radius: 50%;
   background-color: #9a6e3a;
+  box-shadow: 2px 2px 5px #6c6c6c;
 }
 
-.is-display2 {
-  display: none;
-}
 .aboutMe a:hover{
   background: #3fb76c;
   color: #fff;
   border-color: #3fb76c;
   width: 150px;
   height: 150px;
-}
-.aboutMe a:hover .is-display2{
-  display: inline;
-}
-.aboutMe a:hover .is-display1 {
-  display: none;
 }
 
 .aside-box {

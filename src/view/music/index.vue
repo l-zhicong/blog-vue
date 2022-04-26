@@ -1,7 +1,7 @@
 <template>
   <div class="music-box">
     <video autoplay loop muted controls>
-      <source src="../../assets/mp4/music-bg.mp4" type="video/mp4">
+      <source src="../../assets/mp4/music-bg2m.mp4" type="video/mp4">
     </video>
     <audio id="music" crossorigin="anonymous" :src="musicLink" ref="audio" @ended="AutoNext()" :loop=loop autoplay="autoplay">
     </audio>
@@ -94,7 +94,6 @@ export default {
       this.musicList = res.data.list
       this.musicCount = res.data.total
     })
-    console.log("2222")
     this.$nextTick(()=>{
       setInterval(this.upSliderTime,1000)
     })
@@ -246,7 +245,7 @@ export default {
 
 .audio-view canvas{
   /*background-color: black;*/
-  opacity:85%;
+  opacity:0.85;
 }
 
 .canvas-left{
@@ -268,7 +267,7 @@ export default {
 }
 
 .drawer{
-  opacity: 90%;
+  opacity: 0.9;
   /*position: fixed;*/
   top: 5%;
   width: 100%;
@@ -335,7 +334,7 @@ export default {
 
 .openDrawer {
   float: right;
-  opacity: 60%;
+  opacity: 0.6;
 }
 
 .record-img {

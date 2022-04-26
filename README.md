@@ -1,21 +1,23 @@
-# my-project
+# blog-vue
 
-> 
+>
 
-## Build Setup
+[预览地址](http://lzcong.cn)
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+###效果
+![img.png](img.png)
+![img_1.png](img_1.png)
+```
+克隆项目
+```
+git clone https://github.com/L-zhicong/blog-vue
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+依赖
+``
+npm install
+``
+
+run
+``npm run dev``
