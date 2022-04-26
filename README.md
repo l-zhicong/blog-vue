@@ -5,8 +5,8 @@
 [预览地址](http://lzcong.cn)
 
 ###效果
-![img.png](https://hub.fastgit.xyz/L-zhicong/blog-vue/blob/main/img.png?raw=true)
-![img_1.png](https://hub.fastgit.xyz/L-zhicong/blog-vue/blob/main/img_1.png?raw=true)
+![img.png](https://raw.github.com/L-zhicong/blog-vue/main/img.png?raw=true)
+![img_1.png](https://raw.github.com/L-zhicong/blog-vue/main/img_1.png?raw=true)
 ```
 克隆项目
 ```
