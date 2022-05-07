@@ -4,10 +4,10 @@
       <div class="cont-wrap">
         <el-avatar size="medium" :src="require('../../../assets/img/aside-bg.jpg')"></el-avatar>
         <div class="right-cont">
-          <span class="user-name">{{item.userName}}</span>
+          <span class="user-name">{{item.user_name}}</span>
           <span class="cont">{{item.content}}</span>
           <div class="bottom-wrap">
-            <span class="time">{{item.time}}</span>
+            <span class="time">{{item.create_time}}</span>
             <div>
               <el-button type="text" icon="el-icon-chat-dot-round" style="color:#222;" @click="replyHandle(item)">{{item.showReply&&curIndex==item.id?'取消回复':'回复'}}</el-button>
               <el-button type="text" icon="el-icon-thumb" style="color:#222;width:60px;">{{item.support}}</el-button>

@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import lax from 'lax.js'
-import {Progress,Row,Col,Input,Button,Pagination,Radio,Drawer,Slider,Dropdown,DropdownMenu,DropdownItem,Loading} from 'element-ui'
+import {Progress,Row,Col,Input,Button,Pagination,Radio,Drawer,Slider,Dropdown,DropdownMenu,DropdownItem,Loading,Popover,Avatar} from 'element-ui'
 
 Vue.config.productionTip = false
 Vue.use(lax)
@@ -21,6 +21,8 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Loading)
+Vue.use(Popover)
+Vue.use(Avatar)
 import '@/styles/index.scss' // 全局 css
 
 /* eslint-disable no-new */

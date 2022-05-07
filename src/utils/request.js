@@ -7,9 +7,7 @@ import fa from "element-ui/src/locale/lang/fa";
 let loading
 let isShowLoading = true
 const service = axios.create({
-  baseURL: "http://lzcong.cn:81",
-  // baseURL: "http://101.43.236.186:30001",
-  // baseURL: "http://127.0.0.1:8888/index.php",
+  baseURL: "http://127.0.0.1:8888/index.php",
   timeout: 10000 // request timeout
 })
 

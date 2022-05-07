@@ -6,7 +6,7 @@
     </div>
     <div class="btn-wrap">
       <emoji :id="id" v-model="textarea"></emoji>
-      <el-button type="primary" size="small" round :disabled="!textarea.length">&nbsp;&nbsp;发表&nbsp;&nbsp;</el-button>
+      <el-button type="primary" size="small" round :disabled="!textarea">&nbsp;&nbsp;发表&nbsp;&nbsp;</el-button>
     </div>
   </div>
 </template>
