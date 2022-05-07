@@ -1,5 +1,8 @@
 <template>
   <div class="category-box">
+    <a class="item"  @click="getArticleList()">
+      全部
+    </a>
       <a class="item" v-for="(item,index) in category" @click="getArticleList(item.article_category_id)">
         {{item.title}}
       </a>
@@ -53,6 +56,5 @@ export default {
   padding: 15px 18px;
   overflow: hidden;
   position: relative;
-  /* border-bottom: 1px solid #f1f1f1; */
 }
 </style>

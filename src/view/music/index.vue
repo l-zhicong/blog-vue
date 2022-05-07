@@ -93,6 +93,8 @@ export default {
     getMusicList().then(res => {
       this.musicList = res.data.list
       this.musicCount = res.data.total
+      this.musicLink = res.data.list[this.musicIndex].url
+      this.audioCtx.resume()
     })
     this.$nextTick(()=>{
       setInterval(this.upSliderTime,1000)

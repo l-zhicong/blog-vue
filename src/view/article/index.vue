@@ -1,6 +1,6 @@
 <template>
-  <div class="articleBox">
-    <Category @Event="Test" ref="Category"> </Category>
+  <div class="articleBox" ref="articleBox">
+    <Category @Event="Test" ref="Category"></Category>
     <section class="article" ref="scrollTopList">
         <a class="item" v-for="(item, index) of article" :key="index" @click="getArticleInfo(item.id)">
           <a href="javascript:void(0)" class="article-title" @click="">
@@ -20,6 +20,7 @@
           <span v-if="isLoadingData">数据加载中...</span>
         </div>
     </section>
+<!--    有需求再做固定分页-->
 <!--    <el-pagination-->
 <!--      background-->
 <!--      layout="prev, pager, next"-->
@@ -27,12 +28,12 @@
 <!--    </el-pagination>-->
   </div>
 </template>
-
 <script>
 import {Article} from "./data.js"
 import Category from "@/view/article/category";
 import {getArticleList} from "@/api";
-
+import * as THREE from 'three'
+import Fog from 'vanta/dist/vanta.fog.min'
 export default {
   data () {
     return {
@@ -83,8 +84,10 @@ export default {
           arr = this.article.concat(data.list)
         }
         this.article = arr
+        this.renderFog()
       }).catch(err => {
         this.isLoadingData = false
+        this.renderFog()
       })
     },
     getArticleInfo(id){
@@ -129,15 +132,34 @@ export default {
         }
       }
     },
+    renderFog(){
+      let height = this.$refs.scrollTopList.offsetHeight
+      let width = this.$refs.scrollTopList.offsetWidth
+      this.vantaEffect = Fog({
+        el: this.$refs.articleBox,
+        THREE: THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: height,
+        minWidth: width
+      })
+    }
   },
   mounted () {
+
     this.init()
     this.$refs.scrollTopList.addEventListener("scroll",this.throttle(this.handleScroll,500),true)
   },
+  beforeDestroy() {
+    if (this.vantaEffect) {
+      this.vantaEffect.destroy()
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style>
 .list{
   width: 100px;
   height: 100px;
@@ -171,7 +193,6 @@ export default {
 }
 
 .item::after {
-  content: "";
   display: block;
   position: absolute;
   height: 1px;

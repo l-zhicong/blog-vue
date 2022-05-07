@@ -1,15 +1,28 @@
 import axios from 'axios'
 import qs from 'qs'
-import { MessageBox, Message } from 'element-ui'
+import {  Message } from 'element-ui'
+import { Loading } from 'element-ui';
+import fa from "element-ui/src/locale/lang/fa";
 
+let loading
+let isShowLoading = true
 const service = axios.create({
   baseURL: "http://127.0.0.1:8888/index.php",
-  timeout: 5000 // request timeout
+  timeout: 10000 // request timeout
 })
+
+
 
 // request interceptor
 service.interceptors.request.use(
+  // Loading.service(options),
   config => {
+    if (isShowLoading){
+      loading = Loading.service({
+        lock: false,
+        text: '正在加载',
+        background: 'rgba(0, 0, 0,  0.8)'})
+    }
     if (config.data) {
       config.data = qs.stringify(config.data)
     }
@@ -35,8 +48,12 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
+      loading.close()
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
+      if (isShowLoading){
+        loading.close()
+      }
       return res
     }
   },
