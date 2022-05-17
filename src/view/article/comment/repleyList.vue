@@ -14,12 +14,12 @@
             </div>
           </div>
           <div v-show="item.showReply&&curIndex==item.id">
-            <reply-input :id="item.id" v-model="item.reply"></reply-input>
+            <reply-input :id="item.id" :article-id="articleId" v-model="item.reply"></reply-input>
           </div>
         </div>
       </div>
       <div class="item-children" v-if="item.list&&item.list.length">
-        <reply-list :curIndex="curIndex" :list="item.list" @change="change"></reply-list>
+        <reply-list :article-id="articleId" :curIndex="curIndex" :list="item.list" @change="change"></reply-list>
       </div>
     </div>
   </div>
@@ -30,6 +30,10 @@ import replyInput from './reply.vue'
 export default {
   name: 'ReplyList',
   props: {
+    articleId:{
+      type:Number,
+      required: true
+    },
     curIndex: {
       type: Number,
       required: true
@@ -46,6 +50,9 @@ export default {
     },
     change(obj){
       this.$emit('change',obj)
+    },
+    replace(){
+      this.$parent.replace()
     }
   }
 }
@@ -54,6 +61,9 @@ export default {
 <style scoped>
 .cont-wrap{
   display: flex;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 16px;
 }
 .cont-wrap span {
   margin-right: 10px;
