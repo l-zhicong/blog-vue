@@ -16,9 +16,7 @@
           </div>
         </a>
         <div class="loadmore" v-if="!isLoadingData">没有更多数据了</div>
-        <div class="loadmore" v-else>
-          <span v-if="isLoadingData">数据加载中...</span>
-        </div>
+        <div class="loadmore" v-if="isLoadingData">数据加载中...</div>
     </section>
 <!--    有需求再做固定分页-->
 <!--    <el-pagination-->
@@ -39,7 +37,7 @@ export default {
     return {
       queryParams: {
         page: 1,
-        limit: 5,
+        limit: 10,
         cid:"",
       },
       article: [],

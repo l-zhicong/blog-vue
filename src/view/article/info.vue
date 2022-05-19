@@ -1,19 +1,19 @@
 <template>
-  <div class="article-info-box">
+  <div class="article-info-box" ref="ArtcleInfo">
     <div class="article-box">
       <h1 class="article-nav">
         {{title}}
       </h1>
       <section class="content-box" ref="content">
-        <div class="article-content" v-html="content">
+        <div  class="article-content" v-html="content">
         </div>
       </section>
     </div>
     <div class="comment-box">
       <h6>发表评论</h6>
-      <reply-input :id="''" v-model="textarea"></reply-input>
-      <h6>评论列表({{replyList.length+1}})</h6>
-      <reply-list :curIndex="curIndex" :list="replyList" @change="change"></reply-list>
+      <reply-input :id="0" :article-id="Number(id)" v-model="textarea"></reply-input>
+      <h6>评论列表({{commentNum}})</h6>
+      <reply-list :articleId="Number(id)" :curIndex="curIndex" :list="replyList" @change="change"></reply-list>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@
 import {getArticleInfo} from '@/api'
 import * as THREE from 'three'
 import Net from 'vanta/dist/vanta.net.min'
-import ReplyList from './comment/index'
+import ReplyList from './comment/repleyList'
 import ReplyInput from './comment/reply'
 export default {
   name: "info",
@@ -32,22 +32,25 @@ export default {
   },
   data() {
     return {
+      id:0,
       title:"",
       content:"",
 
       curIndex: 0,
-      textarea: 'sad',
+      textarea: '', //回复内容
       replyList: [],
+      commentNum:0,
 
       detailObj: {}
     }
   },
   methods:{
     getInfo(){
-      getArticleInfo(this.$route.params.id).then(res =>{
+      getArticleInfo(this.id).then(res =>{
         this.title = res.data.title
         this.content = res.data.content.content
         this.replyList = res.data.comment
+        this.commentNum = res.data.commentNum
         this.renderNet()
       })
     },
@@ -55,7 +58,7 @@ export default {
       let height = this.$refs.content.offsetHeight
       let width = this.$refs.content.offsetWidth
       this.vantaEffect = Net({
-        el: this.$refs.content,
+        el: this.$refs.ArtcleInfo,
         THREE: THREE,
         mouseControls: true,
         touchControls: true,
@@ -84,24 +87,13 @@ export default {
         }
       })
     },
-    // 遍历添加唯一标识
-    deepSetList(arr,level=1,parentLevel=''){
-      if(!Array.isArray(arr)){
-        return
-      }
-      return arr.map((item,i) => {
-        let levelKey = level == 1 ? (i + 1) : parentLevel + '-' + (i + 1)
-        return {
-          ...item,
-          showReply: false,
-          reply: '',
-          level: levelKey,
-          list: this.deepSetList(item.list,level+1,levelKey)
-        }
-      })
+    replace(){
+
+      this.getInfo()
     }
   },
   mounted() {
+    this.id = this.$route.params.id
     this.getInfo()
   },
   beforeDestroy() {
@@ -131,7 +123,18 @@ export default {
   margin: 0 auto;
   padding: 0 20%;
   font-size: 20px;
+
+
+  table-layout: fixed;
+  word-break: break-all;
+  max-width: 100%;
 }
+
+.article-content >>> pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 
 .content-box{
   width: 100%;
@@ -144,6 +147,7 @@ export default {
   margin-top: 40px;
   width: 60%;
   left: 20%;
+  bottom: 20px;
 }
 
 .comment-box h6{
