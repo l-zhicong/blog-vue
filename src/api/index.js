@@ -20,6 +20,14 @@ export function getArticleInfo(id) {
   })
 }
 
+export function sendComment(data){
+  return request({
+    url: `api/comment`,
+    method: 'post',
+    data: data
+  })
+}
+
 export function getCategoryList(query) {
   return request({
     url: `${category}/list`,
