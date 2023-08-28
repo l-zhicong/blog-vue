@@ -9,7 +9,7 @@
           </a>
           <h1>
             <a>Tobapnw：</a>
-            <a>想过成功，想过放弃，但从没想过放弃。</a>
+            <a>想过成功，想过失败，但从没想过放弃。</a>
           </h1>
           <slot></slot>
           <div class="aside-icon">
@@ -48,6 +48,7 @@
 
 <script>
 import Bottom from "@/layouts/components/Bottom";
+import {mapMutations} from "vuex";
 export default {
   components: {
     Bottom
@@ -58,6 +59,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['user/showLogin']),
     toArticle() {
       this.$router.push("article")
     },
@@ -65,6 +67,7 @@ export default {
       this.$router.push("music")
     },
     toProject() {
+      // this.$store.dispatch("user/showLogin")
       this.$router.push("notice")
     },
     toAbout() {

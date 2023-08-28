@@ -58,3 +58,48 @@ export function sendOutLetter(data) {
     data: data
   })
 }
+
+export function login(data) {
+  return request({
+    url: '/api/login',
+    method: 'post',
+    data
+  })
+}
+
+export function getInfo() {
+  return request({
+    url: '/api/user/info',
+    method: 'post'
+  })
+}
+
+export const logout = () => {
+  return request({
+    url: '/api/jwt/InBlacklist',
+    method: 'post'
+  })
+}
+
+export const getUserLoginTimeList = () => {
+  return request({
+    url: '/api/getUserLoginTimeList',
+    method: 'post'
+  })
+}
+
+export const getLoginTimeList = (data) => {
+  return request({
+    url: '/api/getLoginTimeList',
+    method: 'post',
+    data
+  })
+}
+
+export const getUserList = (data) => {
+  return request({
+    url: '/api/user/list',
+    method: 'post',
+    data
+  })
+}
