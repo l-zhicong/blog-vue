@@ -67,8 +67,8 @@ export default {
       this.$router.push("music")
     },
     toProject() {
-      // this.$store.dispatch("user/showLogin")
-      this.$router.push("notice")
+      this.$store.dispatch("user/showLogin")
+      // this.$router.push("notice")
     },
     toAbout() {
       this.$router.push("about")

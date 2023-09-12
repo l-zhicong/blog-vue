@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import lax from 'lax.js'
 import store from './store' //store vuex
+import '@/permission' // 路由守护
 import {Progress,Row,Col,Input,Button,Pagination,Radio,
   Drawer,Slider,Dropdown,DropdownMenu,
   DropdownItem,Loading,Popover,Avatar,
