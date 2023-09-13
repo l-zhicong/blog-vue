@@ -2,12 +2,13 @@ import axios from 'axios'
 import qs from 'qs'
 import {  Message } from 'element-ui'
 import { Loading } from 'element-ui';
-import fa from "element-ui/src/locale/lang/fa";
+import store from "@/store";
+import {getToken} from "@/utils/auth";
 
 let loading
 let isShowLoading = true
 const service = axios.create({
-  baseURL: "http://127.0.0.1:8888/index.php",
+  baseURL: "http://127.0.0.1:8000/index.php",
   timeout: 10000 // request timeout
 })
 
@@ -27,6 +28,9 @@ service.interceptors.request.use(
       config.data = qs.stringify(config.data)
     }
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+    if (store.getters.token) {
+      config.headers['x-token'] = getToken()
+    }
     config.responseType = 'json'
     return config
   },

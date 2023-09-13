@@ -20,7 +20,8 @@
     "three": "^0.140.0",
     "vanta": "^0.5.22",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
